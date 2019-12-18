@@ -1,19 +1,29 @@
-#include "Arduino.h"
+#include <Arduino.h>
+
+#define SENSOR_1_PIN 4
+#define SENSOR_2_PIN 5
+
+#define RIGHT 0x1
+#define LEFT  0x0
 
 void setup()
 {
-    // initialize LED digital pin as an output.
+    Serial.begin(9600);
+    pinMode(SENSOR_1_PIN, INPUT);
+    pinMode(SENSOR_2_PIN, INPUT);
     pinMode(LED_BUILTIN, OUTPUT);
 }
 
 void loop()
 {
-    // turn the LED on (HIGH is the voltage level)
-    digitalWrite(LED_BUILTIN, HIGH);
-    // wait for a second
-    delay(1000);
-    // turn the LED off by making the voltage LOW
-    digitalWrite(LED_BUILTIN, LOW);
-    // wait for a second
-    delay(1000);
+    const int sensor1Input = digitalRead(SENSOR_1_PIN);
+    const int sensor2Input = digitalRead(SENSOR_1_PIN);
+
+    if (sensor1Input == HIGH) {
+        Serial.println("Laser connected");
+    } else {
+        Serial.println("Laser not connected");
+    }
+
+    digitalWrite(LED_BUILTIN, sensor1Input);
 }
