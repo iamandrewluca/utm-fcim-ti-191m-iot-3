@@ -11,16 +11,16 @@ function create(direction) {
 }
 
 app.get('/random', (req, res) => {
-  create(Math.random() > 0.5 ? 'RIGHT' : 'LEFT')
+  create(Math.random() > 0.5 ? 'IN' : 'OUT')
     .then(e => res.send(e))
 })
 
-app.get('/left', (req, res) => {
-  create('LEFT').then(e => res.send(e))
+app.get('/in', (req, res) => {
+  create('IN').then(e => res.send(e))
 })
 
-app.get('/right', (req, res) => {
-  create('RIGHT').then(e => res.send(e))
+app.get('/out', (req, res) => {
+  create('OUT').then(e => res.send(e))
 })
 
 app.get('/all', (req, res) => {
