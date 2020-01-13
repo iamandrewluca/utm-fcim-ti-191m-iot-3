@@ -27,7 +27,7 @@ const App: React.FC = () => {
             </li>
           )}
           {data && data.map(d => (
-            <li className="list-group-item d-flex align-items-center">
+            <li key={d.id} className="list-group-item d-flex align-items-center">
               {new Date(d.createdAt).toUTCString()}
               <span className="ml-2 badge badge-primary badge-pill">id: {d.id}</span>
               <span className={`ml-auto badge ${d.direction === 'OUT' ? 'badge-warning' : 'badge-success'} badge-pill`}>{d.direction}</span>
